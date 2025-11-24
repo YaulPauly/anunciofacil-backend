@@ -1,0 +1,90 @@
+############################
+# Maven
+############################
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/timing.properties
+mvnw
+mvnw.cmd
+
+############################
+# Spring Boot
+############################
+# Logs
+*.log
+spring.log
+
+# Archivos temporales
+*.tmp
+*.temp
+
+############################
+# IntelliJ IDEA
+############################
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+############################
+# Eclipse
+############################
+.project
+.classpath
+.settings/
+.bin/
+
+############################
+# VSCode
+############################
+.vscode/
+
+############################
+# Java
+############################
+*.class
+*.jar
+*.war
+*.ear
+
+############################
+# Sistema Operativo
+############################
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+############################
+# Git
+############################
+*.orig
+
+############################
+# Credenciales / Archivos sensibles
+############################
+*.env
+.env.*
+application-local.properties
+application-local.yml
+application-dev.properties
+application-dev.yml
+
+############################
+# Otros
+############################
+# Archivos de compilación temporales
+build/
+dist/
+
+# Dependencias descargadas (caso Gradle si algún IDE lo crea)
+.gradle/
