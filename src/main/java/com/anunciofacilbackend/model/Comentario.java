@@ -29,12 +29,12 @@ public class Comentario {
     @Column(nullable = false)
     private LocalDateTime fechaPublicacion;
 
-    // FK Usuario
+
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
-    // FK Publicación
+
     @ManyToOne
     @JoinColumn(name = "id_publicacion", nullable = false)
     private Publicacion publicacion;

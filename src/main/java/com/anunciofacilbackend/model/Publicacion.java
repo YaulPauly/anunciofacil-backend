@@ -33,19 +33,18 @@ public class Publicacion {
 
     private LocalDateTime fechaPublicacion;
 
-    // Si son varias imágenes puedes usar una tabla separada,
-    // pero si solo es una URL, esto basta
+
     private String imagenes;
 
     @NotBlank(message = "El estado es obligatorio")
     private String estado;
 
-    // FK Usuario (N-1)
+
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
-    // FK Categoria (N-1)
+
     @ManyToOne
     @JoinColumn(name = "id_categoria", nullable = false)
     private Categoria categoria;

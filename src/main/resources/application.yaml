@@ -1,0 +1,16 @@
+
+spring:
+  application:
+    name: anunciofacil-backend
+  datasource:
+    url: jdbc:mysql://localhost:3306/anuncio_facil
+    username: ${username}
+    password: ${password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+  output:
+    ansi:
+      enabled: ALWAYS
