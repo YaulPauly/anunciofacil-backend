@@ -43,7 +43,7 @@ public class Usuario {
     private String fotoPerfil;
 
     @Size(min = 8, max = 8, message = "El DNI debe contener 8 dígitos")
-    private String dni;
+    private String dni = null;
 
     @NotBlank(message = "El estado es obligatorio")
     private String estado;
@@ -61,4 +61,6 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Comentario> comentarios;
+
+
 }
