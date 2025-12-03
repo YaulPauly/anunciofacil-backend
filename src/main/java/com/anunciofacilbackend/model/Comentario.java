@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,19 +22,18 @@ public class Comentario {
     private Long idComentario;
 
     @NotBlank(message = "El contenido del comentario es obligatorio")
-    @Size(min = 2, max = 500)
+    @Size(min = 1, max = 1000)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String contenido;
-
-    @Column(nullable = false)
-    private LocalDateTime fechaPublicacion;
-
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
-
     @ManyToOne
     @JoinColumn(name = "id_publicacion", nullable = false)
     private Publicacion publicacion;
+
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime fechaPublicacion = LocalDateTime.now();
 }

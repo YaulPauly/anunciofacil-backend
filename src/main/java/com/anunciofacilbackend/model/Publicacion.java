@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -24,32 +24,37 @@ public class Publicacion {
     private Long idPublicacion;
 
     @NotBlank(message = "El título es obligatorio")
-    @Size(min = 3, max = 200)
+    @Size(min = 5, max = 200)
+    @Column(nullable = false, length = 200)
     private String titulo;
 
-    @NotBlank(message = "La descripción es obligatoria")
-    @Size(min = 10)
+    @NotBlank(message = "El contenido es obligatorio")
+    @Size(min = 10, max = 5000)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String contenido;
 
-    private LocalDateTime fechaPublicacion;
+    @Size(max = 200)
+    @Column(length = 200)
+    private String locacion;
 
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime fechaPublicacion = LocalDateTime.now();
 
-    private String imagenes;
-
-    @NotBlank(message = "El estado es obligatorio")
-    private String estado;
-
+    @Column(columnDefinition = "TEXT")
+    private String imagenes;  // URLs separadas por comas
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
-
     @ManyToOne
     @JoinColumn(name = "id_categoria", nullable = false)
     private Categoria categoria;
 
-    // Comentarios asociados
+    @Column(nullable = false)
+    private String estado = "Activo";  // "Activo" o "Inactivo"
+
     @OneToMany(mappedBy = "publicacion", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Comentario> comentarios;
 }

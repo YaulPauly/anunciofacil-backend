@@ -25,4 +25,7 @@ public interface PublicacionRepository extends JpaRepository<Publicacion, Long> 
 
     // Buscar por usuario y estado
     List<Publicacion> findByUsuarioIdUsuarioAndEstado(Long idUsuario, String estado);
+
+    // Buscar por título (búsqueda)
+    List<Publicacion> findByTituloContainingIgnoreCase(String titulo);
 }
