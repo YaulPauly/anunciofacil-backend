@@ -3,7 +3,7 @@ spring:
   application:
     name: anunciofacil-backend
   datasource:
-    url: jdbc:mysql://localhost:3306/anuncio_facil
+    url: jdbc:mysql://localhost:3306/bd_anunciofacil
     username: ${username}
     password: ${password}
     driver-class-name: com.mysql.cj.jdbc.Driver

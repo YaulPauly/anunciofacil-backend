@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,6 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
@@ -38,6 +39,7 @@ public class Usuario {
 
     @NotBlank(message = "La contraseña es obligatoria")
     @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
+    @JsonIgnore
     private String contraseña;
 
     private String fotoPerfil;
@@ -48,17 +50,19 @@ public class Usuario {
     @NotBlank(message = "El estado es obligatorio")
     private String estado;
 
-    @Column(nullable = false)
-    private LocalDateTime fechaRegistro;
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime fechaRegistro = LocalDateTime.now();
 
-    // 🔹 Nuevo campo ROL
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Rol rol;  // ADMIN o USUARIO
+
+    @ManyToOne
+    @JoinColumn(name = "id_rol", nullable = false)
+    private Rol rol;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Publicacion> publicaciones;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Comentario> comentarios;
 }
