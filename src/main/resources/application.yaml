@@ -14,3 +14,8 @@ spring:
   output:
     ansi:
       enabled: ALWAYS
+
+jwt:
+  secret: "dBeRLCF7dhSW6G16O309aZZuHEQud5vLvSYkwwlSsYU="
+  expiration: 3600000
+

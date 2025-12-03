@@ -1,5 +1,6 @@
 package com.anunciofacilbackend.service;
 
+import com.anunciofacilbackend.dto.UsuarioLoginDTO;
 import com.anunciofacilbackend.dto.UsuarioRegisterDTO;
 import com.anunciofacilbackend.model.Usuario;
 import com.anunciofacilbackend.repository.UsuarioRepository;
@@ -36,4 +37,15 @@ public class UsuarioService {
         return usuarioRepository.save(nuevoUsuario);
         }
 
+
+    public Usuario authUsuario(UsuarioLoginDTO dto){
+        Usuario usuario = usuarioRepository.findByEmail(dto.getEmail())
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        if (!passwordEncoder.matches(dto.getPassword(), usuario.getContraseña())){
+            throw new RuntimeException("Contraseña incorrecta");
+        }
+
+        return usuario;
+    }
 }
