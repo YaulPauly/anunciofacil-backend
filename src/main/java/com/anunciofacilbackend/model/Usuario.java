@@ -4,20 +4,12 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class Usuario {
 
     @Id
@@ -53,7 +45,6 @@ public class Usuario {
     @Column(nullable = false, updatable = false)
     private LocalDateTime fechaRegistro = LocalDateTime.now();
 
-
     @ManyToOne
     @JoinColumn(name = "id_rol", nullable = false)
     private Rol rol;
@@ -65,4 +56,117 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Comentario> comentarios;
+
+    // ========== CONSTRUCTORES ==========
+
+    public Usuario() {
+    }
+
+    public Usuario(Long idUsuario, String nombre, String apellidos, String email, String contraseña, String estado, Rol rol) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.contraseña = contraseña;
+        this.estado = estado;
+        this.rol = rol;
+    }
+
+    // ========== GETTERS Y SETTERS ==========
+
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public String getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(String fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public LocalDateTime getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(LocalDateTime fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public List<Publicacion> getPublicaciones() {
+        return publicaciones;
+    }
+
+    public void setPublicaciones(List<Publicacion> publicaciones) {
+        this.publicaciones = publicaciones;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
 }

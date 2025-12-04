@@ -1,4 +1,4 @@
-package com.anunciofacilbackend.servicio;
+package com.anunciofacilbackend.service;
 
 import com.anunciofacilbackend.model.Usuario;
 import com.anunciofacilbackend.repository.UsuarioRepository;

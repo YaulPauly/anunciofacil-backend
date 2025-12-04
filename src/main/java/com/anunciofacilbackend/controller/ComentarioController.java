@@ -1,7 +1,7 @@
 package com.anunciofacilbackend.controller;
 
 import com.anunciofacilbackend.model.Comentario;
-import com.anunciofacilbackend.servicio.ComentarioService;
+import com.anunciofacilbackend.service.ComentarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
